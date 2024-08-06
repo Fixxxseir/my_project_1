@@ -10,3 +10,9 @@ def filter_by_state(list_of_dicts: list, state: str = "EXECUTED") -> list:
 
 
 #############################################################################
+
+
+def sort_by_date(dicts_list: list, ascending: bool = True) -> list:
+    """Функция возвращает новый список, отсортированный по дате"""
+    # Сортировка по дате
+    return sorted(dicts_list, key=lambda x: x["date"], reverse=not ascending)
