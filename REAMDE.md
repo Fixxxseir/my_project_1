@@ -14,9 +14,9 @@ git clone https://github.com/Fixxxseir/my_project_1.git
 ```
 pip install -r requirements.txt
 ```
-## Использование:
+## Тестирование:
 
-1. Откройте пакет tests, на данном этапе там находятся файлы для тестирования функций
+1. Мой проект покрыт юнит-тестами через fixture.
 
 ## Документация:
 
