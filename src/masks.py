@@ -13,6 +13,7 @@ def get_mask_card_number(user_card_number: str) -> str:
 
 #############################################################################
 
+
 def get_mask_account(user_account_number: str) -> str:
     """Функция, которая проверяет что номер счета состоит из 20 цифр
     и отдает замаскированный номер счета в формате: **4305"""
@@ -23,5 +24,6 @@ def get_mask_account(user_account_number: str) -> str:
     masked_account_number = "**" + user_account_number[-4:]
 
     return masked_account_number
+
 
 #############################################################################
