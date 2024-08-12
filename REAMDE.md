@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ## Тестирование:
 
 1. Мой проект покрыт юнит-тестами через fixture.
-2. Добавлен модуль test_processing.py для тестирования модуля src\processing.py
+2. Добавлен модуль test_processing.py для тестирования модуля src\processing.py.
 
 ## Документация:
 
