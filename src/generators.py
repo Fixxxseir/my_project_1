@@ -4,8 +4,15 @@ from typing import Dict, Iterator, List
 def filter_by_currency(transactions: list, currency: str) -> Iterator[Dict]:
     """Функция, которая фильтрует список транзакций по заданной валюте"""
     for transaction in transactions:
-        if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency:
-            yield transaction
+        try:
+            currency_code = transaction["operationAmount"]["currency"]["code"]
+        except KeyError:
+            # Логируем ошибку и продолжаем
+            print(f"Ошибка: ключ отсутствует в транзакции {transaction}")
+            continue
+        else:
+            if currency_code == currency:
+                yield transaction
 
 
 def transaction_descriptions(list_of_transactions: List[Dict]) -> Iterator[str]:
