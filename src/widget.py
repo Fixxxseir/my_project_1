@@ -17,6 +17,7 @@ def mask_account_card(account_or_card: str) -> str:
     else:
         return "Invalid input"
 
+
 ####################################################################
 
 
@@ -36,5 +37,6 @@ def get_date(date_str: str) -> str:
     # Форматируем дату как: "день, месяц, год"
     formatted_date = f"{day}.{month}.{year}"
     return formatted_date
+
 
 #######################################################################
