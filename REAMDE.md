@@ -18,6 +18,7 @@ pip install -r requirements.txt
 
 1. Мой проект покрыт юнит-тестами через fixture.
 2. Добавлен модуль test_processing.py для тестирования модуля src\processing.py.
+3. Добавлен модуль test_decorators.py для тестирования модуля src\decorators.py
 
 ## Документация:
 
