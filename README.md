@@ -22,6 +22,9 @@ pip install -r requirements.txt
 4. Добавлен модуль test_external_api для тестирования модуля src\test_external_api.py - было сложно его делать(feels bad man)
 5. Добавлен модуль utils для тестирования модуля src\test_utils.py
 
+## Логи:
+1. Добавлено логирование для модулей masks.py и utils.py
+
 ## Документация:
 
 Для получения дополнительной информации обратитесь к [документации](README.md).
