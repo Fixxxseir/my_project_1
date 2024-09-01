@@ -1,6 +1,6 @@
 import json
-import os
 import logging
+import os
 
 logger = logging.getLogger("utils")
 logger.setLevel(logging.DEBUG)
@@ -35,6 +35,6 @@ def get_transactions(file_path: str) -> list:
         return []
 
 
-file_path = "../data/operations.json"
-transactions = get_transactions(file_path)
-print(transactions)
+# file_path = "../data/operations.json"
+# transactions = get_transactions(file_path)
+# print(transactions)
