@@ -17,11 +17,11 @@ pip install -r requirements.txt
 ## Тестирование:
 
 1. Мой проект покрыт юнит-тестами через fixture.
-2. Добавлен модуль test_processing.py для тестирования модуля src\processing.py.
-3. Добавлен модуль test_decorators.py для тестирования модуля src\decorators.py
-4. Добавлен модуль test_external_api для тестирования модуля src\test_external_api.py - было сложно его делать(feels bad man)
-5. Добавлен модуль utils для тестирования модуля src\test_utils.py
-
+2. Добавлен модуль test_processing.py для тестирования модуля src/processing.py.
+3. Добавлен модуль test_decorators.py для тестирования модуля src/decorators.py
+4. Добавлен модуль test_external_api для тестирования модуля src/external_api.py - было сложно его делать(feels bad man)
+5. Добавлен модуль test_utils для тестирования модуля src\utils.py
+6. Добавлен модуль test_data_reader для тестирования модуля src/data_reader
 ## Логи:
 1. Добавлено логирование для модулей masks.py и utils.py
 
