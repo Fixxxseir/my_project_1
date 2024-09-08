@@ -5,14 +5,15 @@ def filter_by_currency(transactions: list, currency: str) -> Iterator[Dict]:
     """Функция, которая фильтрует список транзакций по заданной валюте"""
     for transaction in transactions:
         try:
-            currency_code = transaction["operationAmount"]["currency"]["code"]
-        except KeyError:
-            # Логируем ошибку и продолжаем
-            print(f"Ошибка: ключ отсутствует в транзакции {transaction}")
-            continue
-        else:
-            if currency_code == currency:
+            if transaction["operationAmount"]["currency"]["code"] == currency:
                 yield transaction
+        except KeyError:
+            pass
+        try:
+            if transaction["currency_code"] == currency:
+                yield transaction
+        except KeyError:
+            pass
 
 
 def transaction_descriptions(list_of_transactions: List[Dict]) -> Iterator[str]:
