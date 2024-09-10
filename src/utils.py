@@ -10,7 +10,7 @@ file_handler.setFormatter(file_formater)
 logger.addHandler(file_handler)
 
 
-def get_transactions(file_path: str) -> list:
+def get_transactions_json(file_path: str) -> list:
     """Функция, которая принимает на вход путь до JSON файла и возвращает список
     с данными о финансовых транзакциях, если файл не существует или не содержит
      список то функция возвращает пустой список"""

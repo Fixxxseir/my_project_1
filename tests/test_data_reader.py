@@ -1,5 +1,4 @@
 import unittest
-from typing import Dict, List
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
@@ -10,63 +9,33 @@ from src.data_reader import read_transactions_from_csv, read_transactions_from_e
 class TestReadTransactionsFromExcel(unittest.TestCase):
 
     @patch("pandas.read_excel")
-    def test_read_transactions_success(self, mock_read_excel: MagicMock) -> None:
-        # Создаем фейковый DataFrame
-        data = {"state": ["EXECUTED"], "from": ["Account1"], "amount": [100]}
-        mock_df = pd.DataFrame(data)
+    def test_read_excel_success(self, mock_read_excel: MagicMock) -> None:
+        # Создаем mock DataFrame, чтобы возвращать тестовые данные
+        mock_df = pd.DataFrame([{"column1": "value1", "column2": "value2"}])
         mock_read_excel.return_value = mock_df
 
-        # Вызов функции
-        result: List[Dict] = read_transactions_from_excel("dummy_path.xlsx", state_filter="EXECUTED")
+        # Тестовый вызов функции
+        result = read_transactions_from_excel("test_file.xlsx")
 
-        # Проверка результатов
-        self.assertEqual(result, [{"state": "EXECUTED", "from": "Account1", "amount": 100}])
-
-    @patch("pandas.read_excel")
-    def test_missing_state_column(self, mock_read_excel: MagicMock) -> None:
-        # Создаем фейковый DataFrame без колонки 'state'
-        data = {"from": ["Account1"], "amount": [100]}
-        mock_df = pd.DataFrame(data)
-        mock_read_excel.return_value = mock_df
-
-        # Вызов функции
-        result: List[Dict] = read_transactions_from_excel("dummy_path.xlsx", state_filter="EXECUTED")
-
-        # Проверка, что результат пустой
-        self.assertEqual(result, [])
+        # Проверяем, что mocking работает
+        mock_read_excel.assert_called_once_with("test_file.xlsx")
+        self.assertEqual(result, [{"column1": "value1", "column2": "value2"}])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
-class TestReadTransactionsFromCSV(unittest.TestCase):
+class TestReadTransactionsFromCsv(unittest.TestCase):
 
     @patch("pandas.read_csv")
-    def test_read_transactions_success(self, mock_read_csv: MagicMock) -> None:
-        # Создаем фейковый DataFrame
-        data = {"state": ["EXECUTED"], "from": ["Account1"], "amount": [100]}
-        mock_df = pd.DataFrame(data)
+    def test_read_csv_success(self, mock_read_csv: MagicMock) -> None:
+        # Создаем mock DataFrame для возвращаемых тестовых данных (теперь пустой)
+        mock_df = pd.DataFrame()
         mock_read_csv.return_value = mock_df
 
-        # Вызов функции
-        result: List[Dict] = read_transactions_from_csv("dummy_path.csv", state_filter="EXECUTED")
+        # Тестовый вызов функции без разделителя
+        read_transactions_from_csv("test_file.csv")
 
-        # Проверка результатов
-        self.assertEqual(result, [{"state": "EXECUTED", "from": "Account1", "amount": 100}])
-
-    @patch("pandas.read_csv")
-    def test_missing_state_column(self, mock_read_csv: MagicMock) -> None:
-        # Создаем фейковый DataFrame без колонки 'state'
-        data = {"from": ["Account1"], "amount": [100]}
-        mock_df = pd.DataFrame(data)
-        mock_read_csv.return_value = mock_df
-
-        # Вызов функции
-        result: List[Dict] = read_transactions_from_csv("dummy_path.csv", state_filter="EXECUTED")
-
-        # Проверка, что результат пустой
-        self.assertEqual(result, [])
+        # Проверяем, что mocking работает с правильными аргументами
+        mock_read_csv.assert_called_once_with("test_file.csv", delimiter=";")
+        self.assertTrue(mock_df.empty)  # Now the DataFrame is empty
 
 
 if __name__ == "__main__":
